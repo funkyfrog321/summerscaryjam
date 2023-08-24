@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float moveSpeed = 500;
 
-    public float groundDrag = 10;
+    public float groundDrag = 3;
 
     public Transform orientation;
 
