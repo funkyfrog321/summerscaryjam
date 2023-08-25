@@ -227,6 +227,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1400970664}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &697674903 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8820333382970710081, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
+  m_PrefabInstance: {fileID: 2081384608}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &697674907
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697674903}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: bf7b9b829d0ce91438d6a862790f5efc, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 7ddc9fcd0f425bf4499696d8340eef60, type: 2}
+  - {fileID: 7400000, guid: bf7b9b829d0ce91438d6a862790f5efc, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,6 +881,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4816506670137295812, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -5.6462584
+      objectReference: {fileID: 0}
+    - target: {fileID: -4816506670137295812, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 602552120280590325, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -905,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2197983372269001338, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 18.01
+      value: 15.1875
       objectReference: {fileID: 0}
     - target: {fileID: 3515149455350184604, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -933,6 +963,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6889425456962982771, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 900251235}
+    - targetCorrespondingSourceObject: {fileID: 8820333382970710081, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 697674907}
     - targetCorrespondingSourceObject: {fileID: -6985463716516610817, guid: ebd11388a16fa1a4091afee127e6d2de, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2113832718}
