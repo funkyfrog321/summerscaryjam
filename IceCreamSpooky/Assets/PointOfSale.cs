@@ -17,8 +17,17 @@ public class PointOfSale : MonoBehaviour
     void OnBackOfTheLineReached(object sender, EventArgs e)
     {
         GameObject gameObject = (GameObject)sender;
+        MoveBackOfTheLineBack();
+    }
 
-        Debug.Log("Received event");
+    void MoveBackOfTheLineBack()
+    {
+        backOfTheLine.transform.position += new Vector3(0, 0, 1);
+    }
+
+    void MoveBackOfTheLineForward()
+    {
+        backOfTheLine.transform.position += new Vector3(0, 0, -1);
     }
 
     // Update is called once per frame

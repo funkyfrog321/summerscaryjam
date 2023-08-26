@@ -22,11 +22,8 @@ public class BackOfTheLine : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Somethign collided");
         if (other.CompareTag("NPC"))
         {
-            Debug.Log("NPC reached the back of the line");
-
             BackOfTheLineReached?.Invoke(other.gameObject, new EventArgs());
         }
     }
