@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Rigidbody rb;
 
-    public float moveSpeed = 500;
+    public float moveSpeed = 15;
 
     public float groundDrag = 3;
 
