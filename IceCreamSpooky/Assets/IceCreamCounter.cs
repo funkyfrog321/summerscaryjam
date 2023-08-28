@@ -50,7 +50,18 @@ public class IceCreamCounter : MonoBehaviour
         iceCreamOrder[1] = 0;
         iceCreamOrder[2] = 0;
 
+        EmptyHand();
         handConeActive.SetActive(false);
+        scoopCounter = 0;
     } 
+
+    public void EmptyHand()
+    {
+        for(int i = handConeActive.transform.childCount-1; i > -1; i--)
+        {
+            Debug.Log("Delete Scoop");
+            Destroy(handConeActive.transform.GetChild(i).gameObject);
+        }
+    }
 
 }
