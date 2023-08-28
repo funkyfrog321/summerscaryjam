@@ -35,14 +35,20 @@ public class IceCreamCounter : MonoBehaviour
         iceCreamOrder[numberScoop] = creamID;
     }
 
+    //Return player's order
+    public int[] GetPlayerOrder()
+    {
+        return iceCreamOrder;
+    }
+
     //Return to default array
     public void resetPlayerOrder()
     {
         Debug.Log("ResetOrder");
 
         iceCreamOrder[0] = 0;
-        iceCreamOrder[0] = 0;
-        iceCreamOrder[0] = 0;
+        iceCreamOrder[1] = 0;
+        iceCreamOrder[2] = 0;
 
         handConeActive.SetActive(false);
     } 

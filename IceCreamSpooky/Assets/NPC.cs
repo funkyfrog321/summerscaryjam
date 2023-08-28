@@ -17,6 +17,7 @@ public class NPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        NPCOrder();
     }
 
     public void Leave()
@@ -66,6 +67,10 @@ public class NPC : MonoBehaviour
         }
     }
 
+    public int[] GetNPCOrder()
+    {
+        return NPCiceCreamOrder;
+    }
 
     // Update is called once per frame
     void Update()

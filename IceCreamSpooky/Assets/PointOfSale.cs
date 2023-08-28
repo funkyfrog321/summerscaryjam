@@ -10,6 +10,8 @@ public class PointOfSale : MonoBehaviour, IInteractable
     // Notify nav agents that the back of the line has moved
     public event EventHandler BackOfTheLineMoved;
 
+    public IceCreamCounter playerOrderPosition;
+
     Queue<NPC> NPCsInLine = new Queue<NPC>();
 
     public void Interact()
@@ -34,7 +36,20 @@ public class PointOfSale : MonoBehaviour, IInteractable
         NPC lastCustomer = NPCsInLine.Dequeue();
         Debug.Assert(lastCustomer != null);
 
-        lastCustomer.Leave();
+
+        int[] NPCOrder = lastCustomer.GetNPCOrder();
+        int[] playerOrder = playerOrderPosition.GetPlayerOrder();
+
+        if (OrderMatches(playerOrder, NPCOrder))
+        {
+            lastCustomer.Leave();
+            playerOrderPosition.resetPlayerOrder();
+        }
+        else
+        {
+            Debug.Log("Incorrect Order");
+        }
+        
 
         foreach (NPC npc in NPCsInLine)
         {
@@ -67,6 +82,22 @@ public class PointOfSale : MonoBehaviour, IInteractable
         BackOfTheLineMoved?.Invoke(this, null);
     }
 
+    public bool OrderMatches(int[] playerArray, int[] enemyArray)
+    {
+        if (playerArray.Length != enemyArray.Length)
+        {
+            return false;
+        }
+
+        for (int i = 0; i < playerArray.Length; i++)
+        {
+            if (playerArray[i] != enemyArray[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     // Update is called once per frame
     void Update()
