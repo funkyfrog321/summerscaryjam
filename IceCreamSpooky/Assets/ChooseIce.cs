@@ -28,9 +28,15 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
     //Assign an ID number to the flavor ice cream that will be consistent for all variations of that flavor. (i.e. nothing = 0, vanilla = 1)
     public int iceCreamID;
 
+    /*ICE CREAM ID VALUES:
+     *      None = 0
+     *      Vanilla = 1
+     *      Chocolate = 2
+     *      Strawberry = 3
+     */
 
+    //Check if cone is active or inactive
     public GameObject handConeActive;
-
 
 
     public void Interact()

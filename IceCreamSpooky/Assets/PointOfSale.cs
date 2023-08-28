@@ -67,6 +67,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
         BackOfTheLineMoved?.Invoke(this, null);
     }
 
+
     // Update is called once per frame
     void Update()
     {

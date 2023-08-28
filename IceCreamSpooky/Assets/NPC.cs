@@ -12,6 +12,8 @@ public class NPC : MonoBehaviour
 
     public bool isNavigatingToLine;
 
+    public int[] NPCiceCreamOrder = { 0, 0, 0 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,27 @@ public class NPC : MonoBehaviour
         isNavigatingToLine = true;
         agent.SetDestination(backOfTheLine.position);
     }
+
+    public void NPCOrder()
+    {
+        int flavor1 = UnityEngine.Random.Range(1, 4);
+        NPCiceCreamOrder[0] = flavor1;
+
+        int flavor2 = UnityEngine.Random.Range(0, 4);
+        NPCiceCreamOrder[1] = flavor2;
+
+        int flavor3 = UnityEngine.Random.Range(0, 4);
+
+        if (flavor2 == 0)
+        {
+            NPCiceCreamOrder[2] = 0;
+        }
+        else
+        {
+            NPCiceCreamOrder[2] = flavor3;
+        }
+    }
+
 
     // Update is called once per frame
     void Update()
