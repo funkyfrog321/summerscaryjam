@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 9892ff66deba5404f9c02e837a9fe1be
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Castoro
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: c275e41643398d64eac0b3b886950771, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
