@@ -38,6 +38,8 @@ public class IceCreamCounter : MonoBehaviour
     //Return to default array
     public void resetPlayerOrder()
     {
+        Debug.Log("ResetOrder");
+
         iceCreamOrder[0] = 0;
         iceCreamOrder[0] = 0;
         iceCreamOrder[0] = 0;

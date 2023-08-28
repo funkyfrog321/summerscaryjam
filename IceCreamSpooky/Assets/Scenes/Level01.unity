@@ -1145,6 +1145,7 @@ MonoBehaviour:
   scoop1Location: {fileID: 210428140}
   scoop2Location: {fileID: 1153132244}
   scoop3Location: {fileID: 977953375}
+  iceCreamID: 3
   handConeActive: {fileID: 1506642949}
 --- !u!136 &229984795
 CapsuleCollider:
@@ -3535,6 +3536,7 @@ MonoBehaviour:
   scoop1Location: {fileID: 210428140}
   scoop2Location: {fileID: 1153132244}
   scoop3Location: {fileID: 977953375}
+  iceCreamID: 2
   handConeActive: {fileID: 1506642949}
 --- !u!136 &684374435
 CapsuleCollider:
@@ -8581,6 +8583,7 @@ MonoBehaviour:
   scoop1Location: {fileID: 210428140}
   scoop2Location: {fileID: 1153132244}
   scoop3Location: {fileID: 977953375}
+  iceCreamID: 1
   handConeActive: {fileID: 1506642949}
 --- !u!1 &1780518625
 GameObject:

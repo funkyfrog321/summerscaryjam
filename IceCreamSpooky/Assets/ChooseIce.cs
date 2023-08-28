@@ -25,6 +25,10 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
     public Transform scoop2Location;
     public Transform scoop3Location;
 
+    //Assign an ID number to the flavor ice cream that will be consistent for all variations of that flavor. (i.e. nothing = 0, vanilla = 1)
+    public int iceCreamID;
+
+
     public GameObject handConeActive;
 
 
@@ -56,8 +60,12 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
            //Parent the new ice cream scoop to the player character so that it moves with cone.
            newIceCream.transform.SetParent(parentChange);
 
+            //Set ice cream flavor in array
+            iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());
+
            iceCreamCounter.IncreaseCounter();
      
+
         }
         else if (iceCreamCounter.GetCounter() == 1 && handConeActive.activeSelf == true)
         {
@@ -71,6 +79,9 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
 
             //Parent the new ice cream scoop to the player character so that it moves with cone.
             newIceCream.transform.SetParent(parentChange);
+
+            //Set ice cream flavor in array
+            iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());
 
             iceCreamCounter.IncreaseCounter();
         }
@@ -86,6 +97,9 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
 
             //Parent the new ice cream scoop to the player character so that it moves with cone.
             newIceCream.transform.SetParent(parentChange);
+
+            //Set ice cream flavor in array
+            iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());
 
             iceCreamCounter.IncreaseCounter();
         }
