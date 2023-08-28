@@ -27,7 +27,6 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
 
     public GameObject handConeActive;
 
-    private int counter = 0;
 
 
     public void Interact()
