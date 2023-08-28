@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class ServeIce : MonoBehaviour
 {
-
-    public GameObject npc;
-    public GameObject player;
-
     public bool OrderMatches(int[] playerArray, int[] enemyArray)
     {
         if(playerArray.Length != enemyArray.Length)
