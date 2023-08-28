@@ -8,8 +8,14 @@ public class FlickerLights : MonoBehaviour
     public Material lightMaterial;
     public Light light;
 
+    public float flickerIntensity = 1.0f;
+
     [Range(0f, 1f)]
+    // How often the light flickers
     public float flickerRate = 0.2f;
+    public double flickerFreq = 1;
+    [Range (0f, (float)Math.PI*2)]
+    public float flickerPhase = 0;
 
     // Baselines to be adjusted
     public Color lightColor;
@@ -27,10 +33,10 @@ public class FlickerLights : MonoBehaviour
         bool flicker = UnityEngine.Random.Range(0.0f, 1.0f) < flickerRate;
         if (flicker)
         {
-            float sinTime = (float)Math.Sin(Time.time);
-            sinTime = (sinTime + 1) * 0.5f;
-            light.intensity = lightIntensity * sinTime;
-            lightMaterial.SetColor("_EmissionColor", lightColor * sinTime);
+            float flickerValue = (float)Math.Sin(Time.time*flickerFreq + flickerPhase);
+            flickerValue = flickerValue * flickerIntensity;
+            light.intensity = lightIntensity + flickerValue;
+            lightMaterial.SetColor("_EmissionColor", lightColor * (1.0f + flickerValue));
         }
         else
         {
