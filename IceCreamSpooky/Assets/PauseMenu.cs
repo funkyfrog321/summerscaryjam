@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenu;
     public static bool isPaused;
 
+    public GameObject cursor;
+
     public Slider volumeSlider;
 
     // Start is called before the first frame update
@@ -35,6 +37,7 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
+        HideOrShowCursor();
     }
     
     public void ChangeVolume(float volume)
@@ -64,5 +67,14 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("Menu");
+    }
+
+    public void HideOrShowCursor()
+    {
+        if(pauseMenu.activeSelf == true)
+        {
+            cursor.SetActive(false );
+        }
+        else { cursor.SetActive(true ); }
     }
 }

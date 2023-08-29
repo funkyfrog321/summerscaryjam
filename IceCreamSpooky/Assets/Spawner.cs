@@ -37,6 +37,17 @@ public class Spawner : MonoBehaviour
         SpawnNPC();
         SpawnNPC();
         SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+        SpawnNPC();
+
+
     }
 
     // Update is called once per frame

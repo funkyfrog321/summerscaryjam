@@ -44,4 +44,14 @@ public class FlickerLights : MonoBehaviour
             lightMaterial.SetColor("_EmissionColor", lightColor);
         }
     }
+    public float GetLightIntesity()
+    {
+        return lightIntensity;
+    }
+
+    public void SetLightIntensity(float intensity)
+    {
+        lightIntensity = intensity;
+    }
+
 }
