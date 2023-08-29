@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.PlasticSCM.Editor.WebApi;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PointOfSale : MonoBehaviour, IInteractable
@@ -12,7 +14,12 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
     public IceCreamCounter playerOrderPosition;
 
+    public OrderView orderView;
+
     Queue<NPC> NPCsInLine = new Queue<NPC>();
+
+
+    public int[] currentCustomerOrder;
 
     public void Interact()
     {
@@ -31,6 +38,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
         backOfTheLine.GetComponent<BackOfTheLine>().BackOfTheLineReached += OnBackOfTheLineReached;
     }
 
+
     void OnCustomerServed()
     {
         NPC lastCustomer = NPCsInLine.Dequeue();
@@ -44,6 +52,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
         {
             lastCustomer.Leave();
             playerOrderPosition.resetPlayerOrder();
+            orderView.DisplayOrder();
         }
         else
         {
@@ -58,6 +67,17 @@ public class PointOfSale : MonoBehaviour, IInteractable
         MoveBackOfTheLineForward();
     }
 
+    public int[] GetFirstOrder()
+    {
+        NPC lastCustomer = NPCsInLine.Dequeue();
+        Debug.Assert(lastCustomer != null);
+
+        int[] NPCOrder = lastCustomer.GetNPCOrder();
+        currentCustomerOrder = NPCOrder;
+        return currentCustomerOrder;
+    }
+
+
     void OnBackOfTheLineReached(object sender, EventArgs e)
     {
         NPC npc = ((GameObject)sender).GetComponent<NPC>();
@@ -66,6 +86,8 @@ public class PointOfSale : MonoBehaviour, IInteractable
             NPCsInLine.Enqueue(npc);
             npc.isNavigatingToLine = false;
         }
+
+        orderView.BuildQueue(npc.GetNPCOrder());
 
         MoveBackOfTheLineBack();
     }
