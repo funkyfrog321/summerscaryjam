@@ -8,19 +8,19 @@ public class OrderView : MonoBehaviour
     public PointOfSale pointOfSale;
 
     Queue<int[]> ListOfOrders = new Queue<int[]>();
+    public bool orderIsDisplayed = false;
 
     public GameObject[] flavors;
-
-    public Vector3[] spawnLocations;
-
+    Vector3[] spawnLocations = new Vector3[3];
     public Transform[] scoopLocations;
-
     public Transform newParent;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnLocations[0] = scoopLocations[0].transform.position;
+        spawnLocations[1] = scoopLocations[1].transform.position;
+        spawnLocations[2] = scoopLocations[2].transform.position;
     }
 
     // Update is called once per frame
@@ -32,37 +32,68 @@ public class OrderView : MonoBehaviour
     public void BuildQueue(int[] order)
     {
         ListOfOrders.Enqueue(order);
+        Debug.Log("Added order: " + OrderToString(order));
+    }
+
+    string OrderToString(int[] order)
+    {
+        string orderString = "";
+        for (int i = 0; i < order.Length; i++)
+        {
+            int item = order[i];
+            switch (item)
+            {
+                case 0:
+                    continue;
+                case 1:
+                    orderString += "vanilla, ";
+                    break;
+                case 2:
+                    orderString += "chocolate, ";
+                    break;
+                case 3:
+                    orderString += "strawberry, ";
+                    break;
+            }
+        }
+
+        orderString += "[" + order[0] + order[1] + order[2] + "]";
+
+        return orderString;
     }
 
     public void DisplayOrder()
     {
-        spawnLocations[0] = scoopLocations[0].transform.position;
-        spawnLocations[1] = scoopLocations[1].transform.position;
-        spawnLocations[2] = scoopLocations[2].transform.position;
-        int[] currentOrder = ListOfOrders.Dequeue();
+        ClearDisplayOrder();
 
-        for(int i = 0; i <= currentOrder.Length -1; i++)
+        if (ListOfOrders.Count > 0)
         {
-            if (currentOrder[i] > 0)
-            {
-                Debug.Log(currentOrder[i]);
-                //Spawn in Ice Cream on top of location of i scoop.
-                GameObject newIceCream = Instantiate(flavors[currentOrder[i]],
-                                                     spawnLocations[i],
-                                                     Quaternion.identity);
+            orderIsDisplayed = true;
 
-                //Parent the new ice cream scoop to the player character so that it moves with cone.
-                newIceCream.transform.SetParent(newParent);
+            int[] currentOrder = ListOfOrders.Dequeue();
+            Debug.Log("Displaying order: " + OrderToString(currentOrder));
+            for (int i = 0; i <= currentOrder.Length - 1; i++)
+            {
+                if (currentOrder[i] > 0)
+                {
+                    //Spawn in Ice Cream on top of location of i scoop.
+                    Debug.Log("i:" + i + ", currentOrder[i]:" + currentOrder[i] + ", flavors[currentOrder[i]]:" + flavors[currentOrder[i] - 1] + ", spawnLocations[i]:" + spawnLocations[i]);
+                    GameObject newIceCream = Instantiate(flavors[currentOrder[i] - 1],
+                                                         spawnLocations[i],
+                                                         Quaternion.identity);
+
+                    //Parent the new ice cream scoop to the player character so that it moves with cone.
+                    newIceCream.transform.SetParent(newParent);
+                }
             }
-            
         }
     }
 
     public void ClearDisplayOrder()
     {
+        orderIsDisplayed = false;
         for (int i = newParent.transform.childCount - 1; i > -1; i--)
         {
-            Debug.Log("Delete Scoop");
             Destroy(newParent.transform.GetChild(i).gameObject);
         }
     }

@@ -25,6 +25,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
     {
         if (NPCsInLine.Count == 0)
         {
+            orderView.ClearDisplayOrder();
             return;
         }
 
@@ -69,10 +70,10 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
     public int[] GetFirstOrder()
     {
-        NPC lastCustomer = NPCsInLine.Dequeue();
-        Debug.Assert(lastCustomer != null);
+        NPC firstCustomer = NPCsInLine.Dequeue();
+        Debug.Assert(firstCustomer != null);
 
-        int[] NPCOrder = lastCustomer.GetNPCOrder();
+        int[] NPCOrder = firstCustomer.GetNPCOrder();
         currentCustomerOrder = NPCOrder;
         return currentCustomerOrder;
     }
@@ -81,15 +82,19 @@ public class PointOfSale : MonoBehaviour, IInteractable
     void OnBackOfTheLineReached(object sender, EventArgs e)
     {
         NPC npc = ((GameObject)sender).GetComponent<NPC>();
+        // Makes sure this is only called the first time the NPC collides with the back of the line
         if (npc.isNavigatingToLine)
         {
             NPCsInLine.Enqueue(npc);
             npc.isNavigatingToLine = false;
+            orderView.BuildQueue(npc.GetNPCOrder());
+            if (!orderView.orderIsDisplayed)
+            {
+                orderView.DisplayOrder();
+            }
+            // Make room
+            MoveBackOfTheLineBack();
         }
-
-        orderView.BuildQueue(npc.GetNPCOrder());
-
-        MoveBackOfTheLineBack();
     }
 
     void MoveBackOfTheLineBack()
