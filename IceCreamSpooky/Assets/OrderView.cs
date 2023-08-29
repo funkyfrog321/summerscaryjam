@@ -77,7 +77,7 @@ public class OrderView : MonoBehaviour
                 if (currentOrder[i] > 0)
                 {
                     //Spawn in Ice Cream on top of location of i scoop.
-                    Debug.Log("i:" + i + ", currentOrder[i]:" + currentOrder[i] + ", flavors[currentOrder[i]]:" + flavors[currentOrder[i] - 1] + ", spawnLocations[i]:" + spawnLocations[i]);
+                    //Debug.Log("i:" + i + ", currentOrder[i]:" + currentOrder[i] + ", flavors[currentOrder[i]]:" + flavors[currentOrder[i] - 1] + ", spawnLocations[i]:" + spawnLocations[i]);
                     GameObject newIceCream = Instantiate(flavors[currentOrder[i] - 1],
                                                          spawnLocations[i],
                                                          Quaternion.identity);

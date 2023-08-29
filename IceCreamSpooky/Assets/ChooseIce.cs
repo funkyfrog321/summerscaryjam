@@ -62,8 +62,10 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
            //Spawn in Ice Cream on top of location of first scoop.
            GameObject newIceCream = Instantiate(iceCreamScoop, spawnPoint1, Quaternion.identity);
 
-           //Parent the new ice cream scoop to the player character so that it moves with cone.
-           newIceCream.transform.SetParent(parentChange);
+            //Parent the new ice cream scoop to the player character so that it moves with cone.
+            //newIceCream.transform.SetParent(parentChange);
+            // Parent to the cone for easy disposal
+            newIceCream.transform.SetParent(handConeActive.transform);
 
             //Set ice cream flavor in array
             iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());
@@ -83,7 +85,9 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
             GameObject newIceCream = Instantiate(iceCreamScoop, spawnPoint2, Quaternion.identity);
 
             //Parent the new ice cream scoop to the player character so that it moves with cone.
-            newIceCream.transform.SetParent(parentChange);
+            //newIceCream.transform.SetParent(parentChange);
+            // Parent to the cone for easy disposal
+            newIceCream.transform.SetParent(handConeActive.transform);
 
             //Set ice cream flavor in array
             iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());
@@ -101,7 +105,9 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
             GameObject newIceCream = Instantiate(iceCreamScoop, spawnPoint3, Quaternion.identity);
 
             //Parent the new ice cream scoop to the player character so that it moves with cone.
-            newIceCream.transform.SetParent(parentChange);
+            //newIceCream.transform.SetParent(parentChange);
+            // Parent to the cone for easy disposal
+            newIceCream.transform.SetParent(handConeActive.transform);
 
             //Set ice cream flavor in array
             iceCreamCounter.insertNewCream(iceCreamID, iceCreamCounter.GetCounter());

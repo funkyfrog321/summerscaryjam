@@ -23,6 +23,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        //TODO: double check this
         if (NPCsInLine.Count == 0)
         {
             orderView.ClearDisplayOrder();
