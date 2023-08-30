@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class OrderView : MonoBehaviour
@@ -84,6 +85,9 @@ public class OrderView : MonoBehaviour
 
                     //Parent the new ice cream scoop to the player character so that it moves with cone.
                     newIceCream.transform.SetParent(newParent);
+                    //newIceCream.transform.localPosition = new Vector3(0, 0, 0);
+                    //newIceCream.transform.SetLocalPositionAndRotation(new Vector3(0,0,0), Quaternion.Euler(90,0,0));
+                    //newIceCream.transform.localScale = new Vector3(1,1,1);
                 }
             }
         }

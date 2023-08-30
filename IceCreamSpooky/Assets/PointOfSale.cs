@@ -40,6 +40,9 @@ public class PointOfSale : MonoBehaviour, IInteractable
     {
         backOfTheLine = transform.GetChild(0).GetComponent<BackOfTheLine>();
         backOfTheLine.GetComponent<BackOfTheLine>().BackOfTheLineReached += OnBackOfTheLineReached;
+        int[] order = { 1, 2, 3 };
+        orderView.BuildQueue(order);
+        orderView.DisplayOrder();
     }
 
 
