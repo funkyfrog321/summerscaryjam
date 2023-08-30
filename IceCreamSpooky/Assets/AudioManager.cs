@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions;
 using static Unity.VisualScripting.Member;
 
 public class AudioManager : MonoBehaviour
@@ -61,6 +62,12 @@ public class AudioManager : MonoBehaviour
         musicSource = sources[0];
         PlayTheMusic();
         SingletonLoaded?.Invoke(this, null);
+    }
+
+    public void PlaySound(int soundIndex)
+    {
+        Debug.Assert(soundIndex < sources.Length);
+        sources[soundIndex].Play();
     }
 
     public void StopTheMusic()

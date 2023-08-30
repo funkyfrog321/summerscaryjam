@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChooseIceCream : MonoBehaviour, IInteractable
+public class ChooseIceCream : MonoBehaviour//, IInteractable
 {
     //Ice Cream Scoop GameObject
     public GameObject iceCreamScoop;
@@ -34,14 +34,32 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
      *      Strawberry = 3
      */
 
+    public enum IceCreamFlavor
+    {
+        None, Vanilla, Chocolate, Strawberry
+
+    };
+
+    public static string IceCreamFlavorString(IceCreamFlavor flavor)
+    {
+        return flavor switch
+        {
+            IceCreamFlavor.None => "None",
+            IceCreamFlavor.Vanilla => "Vanilla",
+            IceCreamFlavor.Chocolate => "Chocolate",
+            IceCreamFlavor.Strawberry => "Strawberry",
+            _ => "None",
+        };
+    }
+
     //Check if cone is active or inactive
     public GameObject handConeActive;
 
 
-    public void Interact()
-    {
-        spawnIceCream();
-    }
+    //public void Interact()
+    //{
+    //    spawnIceCream();
+    //}
     
     // Start is called before the first frame update
     void Start()
@@ -49,7 +67,7 @@ public class ChooseIceCream : MonoBehaviour, IInteractable
         iceCreamCounter = FindObjectOfType<IceCreamCounter>();
     }
 
-    void spawnIceCream()
+    public void spawnIceCream()
     {
 
         if(iceCreamCounter.GetCounter() == 0 && handConeActive.activeSelf == true) {
