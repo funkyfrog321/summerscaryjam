@@ -16,6 +16,8 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
     public OrderView orderView;
 
+    public GameTimer gameTimer;
+
     Queue<NPC> NPCsInLine = new Queue<NPC>();
 
 
@@ -55,6 +57,22 @@ public class PointOfSale : MonoBehaviour, IInteractable
             lastCustomer.Leave();
             playerOrderPosition.resetPlayerOrder();
             orderView.DisplayOrder();
+
+            if (NPCOrder[2] > 0)
+            {
+                gameTimer.AddTime(3f);
+                Debug.Log("Add 3 Seconds");
+            }
+            else if(NPCOrder[1] > 0)
+            {
+                gameTimer.AddTime(2f);
+                Debug.Log("Add 2 Seconds");
+            }
+            else
+            {
+                gameTimer.AddTime(1);
+                Debug.Log("Add 1 Second");
+            }
         }
         else
         {

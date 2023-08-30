@@ -62,6 +62,8 @@ public class IceCreamCounter : MonoBehaviour
             Debug.Log("Delete Scoop");
             Destroy(handConeActive.transform.GetChild(i).gameObject);
         }
+        handConeActive.SetActive(false );
+        scoopCounter = 0;
     }
 
 }
