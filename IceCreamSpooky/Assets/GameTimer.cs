@@ -15,6 +15,7 @@ public class GameTimer : MonoBehaviour
 
     private float timeOfLastCreepyStuff = 0f;
     private bool creepyStuff = false;
+    private bool gameOver = false;
     public Animator truckRocker;
 
     public GameOverMenu gameOverMenu;
@@ -22,6 +23,8 @@ public class GameTimer : MonoBehaviour
 
     public void Update()
     {
+        if (gameOver) return;
+
         targetTime -= Time.deltaTime;
 
         if (targetTime <= 0.0f)
@@ -67,6 +70,7 @@ public class GameTimer : MonoBehaviour
 
     void timerEnded()
     {
+        gameOver = true;
         AudioManager.instance.PlaySound(3);
         gameOverMenu.ShowGameOverMenu();
         // Save this for when we have an animation to play
