@@ -28,6 +28,7 @@ public class GameOverMenu : MonoBehaviour
         cursor.SetActive(false);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
+        PauseMenu.canPause = false;
     }
 
     public void RestartLevel()

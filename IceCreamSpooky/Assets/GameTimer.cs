@@ -26,7 +26,6 @@ public class GameTimer : MonoBehaviour
 
     public void Update()
     {
-
         targetTime -= Time.deltaTime;
 
         if (targetTime <= 0.0f)
@@ -52,11 +51,15 @@ public class GameTimer : MonoBehaviour
             creepyStuff = false;
         }
         
-        // Every stage decreases the time between NPC spawns
-        if (Time.time > stageTimes[stageCounter])
+        if (stageCounter < stageTimes.Length)
         {
-            stageCounter++;
-            spawner.SetSpawnInterval(stageSpawnIntervals[stageCounter]);
+            // Every stage decreases the time between NPC spawns
+            if (Time.time > stageTimes[stageCounter])
+            {
+                stageCounter++;
+                spawner.SetSpawnInterval(stageSpawnIntervals[stageCounter]);
+
+            }
         }
 
         TotalTime();
@@ -76,7 +79,10 @@ public class GameTimer : MonoBehaviour
 
     void timerEnded()
     {
-        StartCoroutine(DelayedGameOverMenu());
+        AudioManager.instance.PlaySound(3);
+        gameOverMenu.ShowGameOverMenu();
+        // Save this for when we have an animation to play
+        //StartCoroutine(DelayedGameOverMenu());
     }
 
     IEnumerator DelayedGameOverMenu()

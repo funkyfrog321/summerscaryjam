@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -45,7 +44,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
     void OnCustomerServed()
     {
-        NPC lastCustomer = NPCsInLine.Dequeue();
+        NPC lastCustomer = NPCsInLine.Peek();
         Debug.Assert(lastCustomer != null);
 
 
@@ -54,6 +53,7 @@ public class PointOfSale : MonoBehaviour, IInteractable
 
         if (OrderMatches(playerOrder, NPCOrder))
         {
+            NPCsInLine.Dequeue();
             lastCustomer.Leave();
             playerOrderPosition.resetPlayerOrder();
             orderView.DisplayOrder();

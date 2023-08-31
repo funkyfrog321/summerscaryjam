@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     // Thanks BMo
     public GameObject pauseMenu;
     public static bool isPaused;
+    public static bool canPause = true;
 
     public GameObject cursor;
 
@@ -18,6 +19,7 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canPause = true;
         pauseMenu.SetActive(false);
         if (AudioManager.instance != null)
             volumeSlider.value = AudioManager.instance.masterVolume;
@@ -26,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q))
+        if (canPause && (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Q)))
         {
             if (isPaused)
             {
