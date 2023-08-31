@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
@@ -20,6 +22,8 @@ public class GameTimer : MonoBehaviour
 
     public GameOverMenu gameOverMenu;
     public Spawner spawner;
+    public float alltime;
+    public GameObject myTime;
 
     public void Update()
     {
@@ -60,8 +64,16 @@ public class GameTimer : MonoBehaviour
 
             }
         }
+
+        TotalTime();
+
     }
 
+
+    public void TotalTime()
+    {
+        alltime += Time.deltaTime;
+    }
 
     public void AddTime(float time)
     {
@@ -81,6 +93,7 @@ public class GameTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         gameOverMenu.ShowGameOverMenu();
+        myTime.GetComponent<TextMeshPro>().SetText(alltime.ToString() + "secs");
 
     }
 
