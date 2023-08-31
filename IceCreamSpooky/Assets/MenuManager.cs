@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
     public GameObject mainMenu;
     public GameObject optionsMenu;
     public GameObject creditsMenu;
+    public GameObject controlsMenu;
     public Slider volumeSlider;
 
     // Start is called before the first frame update
@@ -35,6 +36,7 @@ public class MenuManager : MonoBehaviour
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        controlsMenu.SetActive(false);
     }
 
     public void OnAudioSingletonLoaded(object sender, EventArgs e)
@@ -76,6 +78,18 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(DelayedStart());
         flickerLights.GetComponent<Animation>().Play("Spooky");
         postProcessVolume.GetComponent<Animation>().Play("SpookyBloom");
+    }
+
+    public void ShowControls()
+    {
+        mainMenu.SetActive(false);
+        controlsMenu.SetActive(true);
+    }
+
+    public void HideControls()
+    {
+        mainMenu.SetActive(true);
+        controlsMenu.SetActive(false);
     }
 
     IEnumerator DelayedStart()
