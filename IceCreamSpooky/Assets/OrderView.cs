@@ -16,12 +16,16 @@ public class OrderView : MonoBehaviour
     public Transform[] scoopLocations;
     public Transform newParent;
 
+    // Using a list instead of a parent to track flavors for destruction
+    private List<GameObject> displayedFlavors = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {
-        spawnLocations[0] = scoopLocations[0].transform.position;
-        spawnLocations[1] = scoopLocations[1].transform.position;
-        spawnLocations[2] = scoopLocations[2].transform.position;
+        // Use local positions instead - this might not end up getting used anyway
+        spawnLocations[0] = scoopLocations[0].transform.localPosition;
+        spawnLocations[1] = scoopLocations[1].transform.localPosition;
+        spawnLocations[2] = scoopLocations[2].transform.localPosition;
     }
 
     // Update is called once per frame
@@ -83,11 +87,10 @@ public class OrderView : MonoBehaviour
                                                          spawnLocations[i],
                                                          Quaternion.identity);
 
-                    //Parent the new ice cream scoop to the player character so that it moves with cone.
-                    newIceCream.transform.SetParent(newParent);
-                    //newIceCream.transform.localPosition = new Vector3(0, 0, 0);
-                    //newIceCream.transform.SetLocalPositionAndRotation(new Vector3(0,0,0), Quaternion.Euler(90,0,0));
-                    //newIceCream.transform.localScale = new Vector3(1,1,1);
+                    // Changing things up: parent to the scoop location. Add to a list for destruction
+                    newIceCream.transform.SetParent(scoopLocations[i]);
+                    newIceCream.transform.localPosition = new Vector3(0, 0, 0);
+                    displayedFlavors.Add(newIceCream);
                 }
             }
         }
@@ -96,10 +99,12 @@ public class OrderView : MonoBehaviour
     public void ClearDisplayOrder()
     {
         orderIsDisplayed = false;
-        for (int i = newParent.transform.childCount - 1; i > -1; i--)
+        foreach (GameObject flavorDisplay in displayedFlavors)
         {
-            Destroy(newParent.transform.GetChild(i).gameObject);
+            Destroy(flavorDisplay);
         }
+        // Clear the list
+        displayedFlavors = new List<GameObject>();
     }
 
 }
