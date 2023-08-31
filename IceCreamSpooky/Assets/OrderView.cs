@@ -73,6 +73,7 @@ public class OrderView : MonoBehaviour
 
         if (ListOfOrders.Count > 0)
         {
+            AudioManager.instance.PlaySound(2);
             orderIsDisplayed = true;
 
             int[] currentOrder = ListOfOrders.Dequeue();
