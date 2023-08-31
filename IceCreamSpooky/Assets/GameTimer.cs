@@ -85,6 +85,7 @@ public class GameTimer : MonoBehaviour
         gameOver = true;
         AudioManager.instance.PlaySound(3);
         gameOverMenu.ShowGameOverMenu();
+        myTime.GetComponent<TextMeshProUGUI>().SetText(Time.timeSinceLevelLoad.ToString("f2") + " seconds");
         // Save this for when we have an animation to play
         //StartCoroutine(DelayedGameOverMenu());
     }
@@ -93,7 +94,6 @@ public class GameTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         gameOverMenu.ShowGameOverMenu();
-        myTime.GetComponent<TextMeshPro>().SetText(alltime.ToString() + "secs");
 
     }
 
