@@ -3225,17 +3225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0e82a902377a9f478c239e9fd44ff88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetTime: 20
+  targetTime: 60
   stageTimes:
   - 10
   - 20
   - 40
-  - 80
   stageSpawnIntervals:
   - 4
+  - 3.8
+  - 3.5
   - 3
-  - 2
-  - 1
   truckRocker: {fileID: 823131794}
   gameOverMenu: {fileID: 422349096}
   spawner: {fileID: 279287024}
@@ -10594,7 +10593,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400970659}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 2f5a2df7cfe0efc439426aa1e16082aa, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10688,7 +10687,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  moveSpeed: 15
+  moveSpeed: 10
   groundDrag: 7
   orientation: {fileID: 2122777345}
 --- !u!114 &1400970666
@@ -12096,8 +12095,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1755f3afa2f7c940a145c6ae1ca07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensX: 500
-  sensY: 600
+  sensX: 250
+  sensY: 300
   Orientation: {fileID: 2122777345}
 --- !u!20 &1607555039
 Camera:
@@ -13086,7 +13085,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1784827237
 Transform:
   m_ObjectHideFlags: 0
