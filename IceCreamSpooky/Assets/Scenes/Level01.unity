@@ -8939,7 +8939,7 @@ GameObject:
   - component: {fileID: 1149500038}
   - component: {fileID: 1149500037}
   m_Layer: 5
-  m_Name: HoriztonalGroup
+  m_Name: TimeAliveMessage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8963,7 +8963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 3.9}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1149500037
@@ -11217,7 +11217,7 @@ GameObject:
   - component: {fileID: 1465034959}
   - component: {fileID: 1465034958}
   m_Layer: 5
-  m_Name: TimeAliveLabel
+  m_Name: TimeAliveText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
