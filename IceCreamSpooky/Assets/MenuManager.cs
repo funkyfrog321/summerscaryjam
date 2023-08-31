@@ -15,6 +15,7 @@ public class MenuManager : MonoBehaviour
 
     public GameObject mainMenu;
     public GameObject optionsMenu;
+    public GameObject creditsMenu;
     public Slider volumeSlider;
 
     // Start is called before the first frame update
@@ -30,6 +31,10 @@ public class MenuManager : MonoBehaviour
         {
             OnAudioSingletonLoaded(null, null);
         }
+
+        mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
+        creditsMenu.SetActive(false);
     }
 
     public void OnAudioSingletonLoaded(object sender, EventArgs e)
@@ -53,6 +58,17 @@ public class MenuManager : MonoBehaviour
     {
         mainMenu.SetActive(true);
         optionsMenu.SetActive(false);
+    }
+    public void ShowCredits()
+    {
+        mainMenu.SetActive(false);
+        creditsMenu.SetActive(true);
+    }
+
+    public void HideCredits()
+    {
+        mainMenu.SetActive(true);
+        creditsMenu.SetActive(false);
     }
 
     public void StartGame()
