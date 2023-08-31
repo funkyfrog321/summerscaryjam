@@ -13,9 +13,11 @@ public class GameTimer : MonoBehaviour
     private int stageCounter = 0;
     public float[] stageSpawnIntervals = { 4f, 3f, 2f, 1f };
 
+    private float timeOfLastCreepyStuff = 0f;
     private bool creepyStuff = false;
     public Animator truckRocker;
 
+    public GameOverMenu gameOverMenu;
     public Spawner spawner;
 
     public void Update()
@@ -38,6 +40,7 @@ public class GameTimer : MonoBehaviour
                 creepyStuff = true;
                 AudioManager.instance.PlaySound(1);
                 truckRocker.SetTrigger("Rock");
+                timeOfLastCreepyStuff = Time.time; // Might use this so the rock animation doesn't happen too frequently
             }
         }
         else
@@ -61,8 +64,14 @@ public class GameTimer : MonoBehaviour
 
     void timerEnded()
     {
-        //Write Game Over stuff here
+        StartCoroutine(DelayedGameOverMenu());
     }
 
+    IEnumerator DelayedGameOverMenu()
+    {
+        yield return new WaitForSeconds(3f);
+        gameOverMenu.ShowGameOverMenu();
+
+    }
 
 }

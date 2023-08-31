@@ -37,7 +37,6 @@ public class PauseMenu : MonoBehaviour
                 PauseGame();
             }
         }
-        HideOrShowCursor();
     }
     
     public void ChangeVolume(float volume)
@@ -47,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        cursor.SetActive(false);
         pauseMenu.SetActive(true);
         Time.timeScale = 0.0f;
         isPaused = true;
@@ -56,6 +56,7 @@ public class PauseMenu : MonoBehaviour
 
     public void UnpauseGame()
     {
+        cursor.SetActive(true);
         pauseMenu.SetActive(false);
         Time.timeScale = 1.0f;
         isPaused = false;
@@ -67,14 +68,5 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene("Menu");
-    }
-
-    public void HideOrShowCursor()
-    {
-        if(pauseMenu.activeSelf == true)
-        {
-            cursor.SetActive(false );
-        }
-        else { cursor.SetActive(true ); }
     }
 }
